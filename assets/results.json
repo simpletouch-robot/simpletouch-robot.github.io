@@ -1,0 +1,195 @@
+{
+  "simulation": {
+    "label": "UniVTAC simulation",
+    "tasks": [
+      "Lift Bottle",
+      "Pull-out Key",
+      "Lift Can",
+      "Put Bottle",
+      "Insert Hole",
+      "Insert Tube",
+      "Avg.",
+      "Avg. w/o Lifts"
+    ],
+    "rows": [
+      {
+        "method": "ACT",
+        "values": [
+          42.0,
+          28.0,
+          20.0,
+          28.0,
+          19.0,
+          45.0,
+          30.3,
+          30.0
+        ]
+      },
+      {
+        "method": "π₀.₅",
+        "values": [
+          92.0,
+          36.0,
+          59.0,
+          31.0,
+          26.0,
+          34.0,
+          46.3,
+          31.8
+        ]
+      },
+      {
+        "method": "VITaL",
+        "values": [
+          72.0,
+          47.0,
+          8.0,
+          32.0,
+          25.0,
+          34.0,
+          36.3,
+          34.5
+        ]
+      },
+      {
+        "method": "UniVTAC-ACT",
+        "values": [
+          71.0,
+          46.0,
+          29.0,
+          31.0,
+          24.0,
+          56.0,
+          42.8,
+          39.3
+        ]
+      },
+      {
+        "method": "Tactile-VLA",
+        "values": [
+          97.0,
+          32.0,
+          15.0,
+          10.0,
+          41.0,
+          56.0,
+          41.8,
+          34.8
+        ]
+      },
+      {
+        "method": "FTP-π₀.₅",
+        "values": [
+          77.0,
+          30.0,
+          26.0,
+          19.0,
+          47.0,
+          72.0,
+          45.2,
+          42.0
+        ]
+      },
+      {
+        "method": "FTP-1",
+        "values": [
+          97.0,
+          48.0,
+          65.0,
+          47.0,
+          64.0,
+          79.0,
+          66.7,
+          59.5
+        ]
+      },
+      {
+        "method": "SimpleTouch",
+        "values": [
+          100.0,
+          62.0,
+          68.0,
+          50.0,
+          85.0,
+          100.0,
+          77.5,
+          74.3
+        ]
+      }
+    ],
+    "averageIndex": 6,
+    "note": "Six contact-rich tasks · 50 demonstrations per task · 100 evaluation episodes per task. Avg. w/o Lifts excludes Lift Bottle and Lift Can.",
+    "gain": "+10.8",
+    "mean": "77.5",
+    "baseline": "66.7",
+    "count": "Six tasks"
+  },
+  "real": {
+    "label": "Real-world manipulation",
+    "tasks": [
+      "Play Mahjong",
+      "Wipe Board",
+      "Pick Up Chips",
+      "Insert USB",
+      "Avg."
+    ],
+    "rows": [
+      {
+        "method": "ACT",
+        "values": [
+          45.0,
+          15.0,
+          30.0,
+          0.0,
+          22.5
+        ]
+      },
+      {
+        "method": "π₀.₅",
+        "values": [
+          40.0,
+          45.0,
+          55.0,
+          10.0,
+          37.5
+        ]
+      },
+      {
+        "method": "UniVTAC-ACT",
+        "values": [
+          70.0,
+          35.0,
+          25.0,
+          0.0,
+          32.5
+        ]
+      },
+      {
+        "method": "FTP-1",
+        "values": [
+          95.0,
+          65.0,
+          60.0,
+          30.0,
+          62.5
+        ]
+      },
+      {
+        "method": "SimpleTouch",
+        "values": [
+          100.0,
+          85.0,
+          70.0,
+          30.0,
+          71.3
+        ]
+      }
+    ],
+    "averageIndex": 4,
+    "note": "Four real-world tasks · 50 demonstrations per task · 20 evaluation episodes per task.",
+    "gain": "+8.8",
+    "mean": "71.3",
+    "baseline": "62.5",
+    "count": "Four tasks"
+  }
+}

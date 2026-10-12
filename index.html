@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="SimpleTouch augments a pretrained vision-language-action policy with touch. Strong contact-rich manipulation from 50 demonstrations per task, without additional tactile policy pretraining.">
+  <meta property="og:title" content="SimpleTouch — Learning to act with touch">
+  <meta property="og:description" content="Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/teaser.webp">
+  <title>SimpleTouch | Tactile-Enhanced Vision-Language-Action Models</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a href="#" class="wordmark" aria-label="SimpleTouch home"><span class="touch-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Simple<span>Touch</span></a>
+      <div class="nav-links"><a href="#demo">Demo</a><a href="#method">Method</a><a href="#results">Results</a></div>
+      <a class="nav-paper" href="https://arxiv.org/pdf/2610.02784" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="project-name">
+      <p class="eyebrow"><span class="status-dot"></span> Touch meets vision-language-action</p>
+      <h1 id="project-name">Simple<span>Touch</span><span class="title-dot">.</span></h1>
+      <h2 class="paper-title">Can Vision-Language-Action Models Master<br class="desktop-break"> Contact-Rich Manipulation Without<br class="desktop-break"> Tactile Policy Pretraining?</h2>
+      <p class="hero-description">A simple extension. A richer sense of contact.<br>One tactile expert, learned from task demonstrations.</p>
+      <div class="authors" aria-label="Authors">
+        <span>Chen Yang<sup>1,2,*</sup></span><span>Linzhe Shi<sup>2,*</sup></span><span>Changjie Wu<sup>2</sup></span><span>Hang Zhang<sup>2</sup></span><span>Ronghan Chen<sup>2</sup></span><span>Lingjun Zhang<sup>1,2</sup></span><span>Xu Hu<sup>2,3</sup></span><span>Mu Xu<sup>2</sup></span><span>Jiansheng Fan<sup>1</sup></span><span>Chen Wang<sup>1,†</sup></span>
+      </div>
+      <div class="affiliations"><span><sup>1</sup>Tsinghua University</span><span><sup>2</sup>Amap, Alibaba Group</span><span><sup>3</sup>Hong Kong Polytechnic University</span></div>
+      <p class="author-notes">* Equal contribution <span>·</span> † Corresponding author</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://arxiv.org/pdf/2610.02784" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 12h6M9 16h6"/></svg> Paper <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://arxiv.org/abs/2610.02784" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 4 12 16M18 4 6 20M9 4h9v9"/></svg> arXiv <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://github.com/ccyydd/SimpleTouch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg> Code <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://huggingface.co/cyang203912/SimpleTouch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg> Checkpoints <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section id="demo" class="demo-section wrap" aria-label="SimpleTouch demonstration video">
+      <div class="media-heading"><span><span class="status-dot"></span> A closer look at contact</span><span>Four real-world tasks</span></div>
+      <div class="film-stage" id="film-stage">
+        <video id="demo-video" controls playsinline preload="none" poster="assets/video-poster.webp" aria-label="SimpleTouch narrated research demonstration">
+          <source src="assets/simpletouch.mp4" type="video/mp4">
+          <track kind="subtitles" src="assets/captions.vtt" srclang="en" label="English">
+          Your browser does not support embedded video. <a href="assets/simpletouch.mp4">Download the demo.</a>
+        </video>
+        <div class="film-cover" id="film-cover">
+          <div class="task-mosaic">
+            <div><img src="assets/usb.webp" alt="PiPER performing USB insertion with tactile sensors" width="1280" height="720" fetchpriority="high"><span>01 / Insert USB</span></div>
+            <div><img src="assets/chips.webp" alt="Robot picking up a fragile chip" width="1280" height="720"><span>02 / Pick Up Chips</span></div>
+            <div><img src="assets/mahjong.webp" alt="Robot manipulating a Mahjong tile" width="1280" height="720"><span>03 / Play Mahjong</span></div>
+            <div><img src="assets/wipe.webp" alt="Wrist-camera view of the board-wiping task" width="1280" height="720"><span>04 / Wipe Board</span></div>
+          </div>
+          <button class="film-play" data-play="0" aria-label="Play the full SimpleTouch video"><span class="play-triangle" aria-hidden="true"></span><span>Watch SimpleTouch in action<small>Full film · 3 min 15 sec</small></span></button>
+        </div>
+      </div>
+      <div class="chapter-row" aria-label="Jump to a video chapter">
+        <span class="chapter-label">Explore the film</span>
+        <button data-play="49.08">Method <span>0:49</span></button>
+        <button data-play="75.92">Insert USB <span>1:16</span></button>
+        <button data-play="95">Pick Up Chips <span>1:35</span></button>
+        <button data-play="110.4">Play Mahjong <span>1:50</span></button>
+        <button data-play="135.92">Wipe Board <span>2:16</span></button>
+      </div>
+      <p id="video-status" class="sr-only" aria-live="polite"></p>
+    </section>
+
+    <section class="stats wrap" aria-label="Research at a glance">
+      <div><span class="stat-value">50</span><span class="stat-label">Demonstrations per task</span></div>
+      <div><span class="stat-value">10</span><span class="stat-label">Contact-rich tasks</span></div>
+      <div><span class="stat-value">77.5<span>%</span></span><span class="stat-label">UniVTAC average success</span></div>
+      <div><span class="stat-value">71.3<span>%</span></span><span class="stat-label">Real-world average success</span></div>
+    </section>
+
+    <section class="idea-section section-pad" id="idea">
+      <div class="wrap editorial-grid">
+        <div><p class="eyebrow">The central idea</p><h2>More touch.<br>Less training overhead.</h2></div>
+        <div class="idea-copy"><p class="lead">Strong tactile manipulation does not have to start with another policy-pretraining stage.</p><p>SimpleTouch builds on a pretrained π<sub>0.5</sub> policy and a pretrained tactile encoder. A tactile expert learns how to use contact information directly from task demonstrations, with future-touch prediction providing additional supervision.</p><p>There is no additional tactile policy pretraining and no separate visuotactile alignment stage.</p>
+          <details class="abstract-details"><summary>Read the full abstract <span aria-hidden="true">+</span></summary><p id="abstract-text">The complete abstract is available in the <a href="https://arxiv.org/pdf/2610.02784">paper</a>.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="wrap section-pad">
+      <div class="section-heading"><div><p class="eyebrow">01 / Method</p><h2>A small addition.<br>A richer contact signal.</h2></div><p>Keep the pretrained VLA.<br>Add a tactile expert.<br>Learn from the same task demonstrations.</p></div>
+      <div class="principles">
+        <article><span class="principle-number">01</span><h3>Preserve the representation</h3><p>A frozen T3 encoder retains every global and spatial token from current touch.</p></article>
+        <article><span class="principle-number">02</span><h3>Learn a tactile–action interface</h3><p>The action expert reads the tactile expert’s layerwise keys and values alongside visual-language context.</p></article>
+        <article><span class="principle-number">03</span><h3>Learn from future touch</h3><p>Multi-horizon tactile prediction trains the same expert that supplies current-touch context for action generation.</p></article>
+      </div>
+      <figure class="architecture-figure">
+        <button class="image-zoom" data-zoom="assets/overview.webp" data-caption="SimpleTouch architecture and attention masks" aria-label="Enlarge SimpleTouch architecture"><img src="assets/overview.webp" alt="SimpleTouch architecture: VL, tactile, and action experts with asymmetric attention during training and inference" loading="lazy"><span class="zoom-label">View architecture <span aria-hidden="true">↗</span></span></button>
+        <figcaption>SimpleTouch architecture. Current touch informs action generation; future tactile latents provide training-only supervision.</figcaption>
+      </figure>
+      <div class="phase-explainer">
+        <div class="segmented" role="tablist" aria-label="Learning and deployment"><button role="tab" aria-selected="true" aria-controls="phase-panel" id="training-tab" data-phase="training">During training</button><button role="tab" aria-selected="false" aria-controls="phase-panel" id="inference-tab" data-phase="inference" tabindex="-1">At inference</button></div>
+        <div id="phase-panel" role="tabpanel" aria-labelledby="training-tab"><h3>Action learning + future-touch prediction</h3><p>The VLA policy and tactile expert are optimized jointly while T3 stays frozen. Predictive supervision spans multiple future moments, using pooled tactile targets.</p></div>
+        <span class="phase-tag" id="phase-tag">One task-training stage</span>
+      </div>
+    </section>
+
+    <section id="results" class="results-section section-pad">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">02 / Results</p><h2>Simple design.<br>Strong task performance.</h2></div><p>Highest success among evaluated methods<br>across six simulation and four real-world tasks,<br>with 50 demonstrations per task.</p></div>
+        <div class="results-toolbar"><div class="segmented" role="tablist" aria-label="Evaluation benchmark"><button role="tab" id="simulation-tab" aria-selected="true" aria-controls="results-panel" data-benchmark="simulation">UniVTAC <span>6 tasks</span></button><button role="tab" id="real-tab" aria-selected="false" aria-controls="results-panel" data-benchmark="real" tabindex="-1">Real World <span>4 tasks</span></button></div><span class="metric-label">Average success rate (%) ↑</span></div>
+        <div id="results-panel" role="tabpanel" aria-labelledby="simulation-tab">
+          <div class="results-body"><div class="result-takeaway"><p class="eyebrow" id="result-benchmark">UniVTAC simulation</p><div class="result-big"><span id="result-mean">77.5</span><span>%</span></div><p>Average task success</p><div class="gain"><span id="result-gain">+10.8</span> percentage points <span>over FTP-1</span></div><p class="result-context" id="result-context">Highest success on every evaluated UniVTAC task, without additional tactile policy pretraining.</p></div><div class="bar-chart" id="bar-chart" aria-label="Average success rates by method"></div></div>
+          <p class="protocol-note" id="protocol-note">Six contact-rich tasks · 50 demonstrations per task · 100 evaluation episodes per task. Avg. w/o Lifts excludes Lift Bottle and Lift Can.</p>
+          <details class="full-results"><summary>All task-level results <span aria-hidden="true">+</span></summary><div class="table-scroll" tabindex="0" aria-label="Scrollable task success table"><table id="results-table"><caption>Task success rates (%)</caption></table></div><p>Bold indicates the best result; underlining indicates the second-best result. See the paper for method-specific evaluation protocols.</p></details>
+          <noscript><p>JavaScript is disabled. Full results are in Tables 1 and 2 of the <a href="https://arxiv.org/pdf/2610.02784">paper</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-pad insights-section">
+      <div class="section-heading"><div><p class="eyebrow">03 / What makes it work</p><h2>The details behind the simplicity.</h2></div><a class="text-link" href="https://arxiv.org/pdf/2610.02784" target="_blank" rel="noopener">Explore the ablations <span aria-hidden="true">↗</span></a></div>
+      <div class="insights">
+        <article><span class="insight-label">Spatial detail</span><h3>Keep the current<br>touch intact.</h3><p>Using all 197 current tactile tokens per sensor achieves 74.3% mean success, compared with 57.5% using only the CLS token.</p><div class="mini-comparison"><div><span>CLS only</span><span>57.5%</span></div><div class="mini-track"><i style="--value:57.5%"></i></div><div><span>All tokens</span><strong>74.3%</strong></div><div class="mini-track ours"><i style="--value:74.3%"></i></div></div></article>
+        <article><span class="insight-label">Temporal supervision</span><h3>Learn contact<br>as it changes.</h3><p>Multi-horizon prediction reaches 74.3%, versus 68.5% for single-horizon prediction at the same per-horizon spatial resolution.</p><div class="mini-comparison"><div><span>Single-horizon</span><span>68.5%</span></div><div class="mini-track"><i style="--value:68.5%"></i></div><div><span>Multi-horizon</span><strong>74.3%</strong></div><div class="mini-track ours"><i style="--value:74.3%"></i></div></div></article>
+        <article><span class="insight-label">Data efficiency</span><h3>Start with fewer<br>demonstrations.</h3><p>On Put Bottle and Insert Hole, SimpleTouch with 20 demonstrations outperforms FTP-π<sub>0.5</sub> with 50 demonstrations.</p><div class="budget-number">60<span>% fewer</span></div><p class="budget-note">demonstrations at these compared settings</p></article>
+      </div>
+      <p class="protocol-note">Token and prediction ablations report the mean over Pull-out Key, Put Bottle, Insert Hole, and Insert Tube.</p>
+    </section>
+
+    <section class="paper-section section-pad" id="paper">
+      <div class="wrap paper-grid"><div><p class="eyebrow">Go deeper</p><h2>A simpler route to<br>contact-rich manipulation.</h2><p>Read the full method, controlled ablations, and evaluation protocols.</p><div class="hero-actions"><a class="button primary" href="https://arxiv.org/pdf/2610.02784" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a><a class="button" href="https://github.com/ccyydd/SimpleTouch" target="_blank" rel="noopener">Code repository <span aria-hidden="true">↗</span></a></div></div><a class="paper-preview" href="https://arxiv.org/pdf/2610.02784" target="_blank" rel="noopener" aria-label="Open the SimpleTouch paper"><span>THE PAPER <span aria-hidden="true">↗</span></span><img src="assets/teaser.webp" alt="SimpleTouch paper overview, including the model and task performance" loading="lazy"><strong>SimpleTouch</strong><p>Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?</p></a></div>
+    </section>
+
+    <section id="citation" class="wrap citation-section">
+      <div class="citation-heading"><h2>Citation</h2><button class="copy-button" id="copy-citation">Copy BibTeX <span aria-hidden="true">⧉</span></button></div>
+      <pre id="bibtex" tabindex="0">@misc{yang2026simpletouchvisionlanguageactionmodelsmaster,
+  title={SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?},
+  author={Chen Yang and Linzhe Shi and Changjie Wu and Hang Zhang and Ronghan Chen and Lingjun Zhang and Xu Hu and Mu Xu and Jiansheng Fan and Chen Wang},
+  year={2026},
+  eprint={2610.02784},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2610.02784},
+}</pre><span class="sr-only" id="copy-status" role="status"></span>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="wordmark" href="#">Simple<span>Touch</span></a><span>Tsinghua University · Amap, Alibaba Group · Hong Kong Polytechnic University</span><a href="mailto:chwang@tsinghua.edu.cn">Contact <span aria-hidden="true">↗</span></a></footer>
+  <dialog id="figure-dialog" aria-labelledby="figure-title"><div class="dialog-header"><h2 id="figure-title">SimpleTouch architecture</h2><button id="close-dialog" aria-label="Close enlarged figure">×</button></div><div class="dialog-image"><img id="dialog-img" alt=""></div><p>Scroll to inspect the full-resolution figure.</p></dialog>
+</body>
+</html>

@@ -1,0 +1,18 @@
+Typography provenance
+=====================
+Optimistic.ttf is reused without modification from this manuscript's existing
+typography asset. The manuscript records its source as the TeX source bundle of
+MemGen: Weaving Generative Latent Memory for Self-Evolving Agents,
+https://arxiv.org/abs/2509.24704v2 (source bundle distributed under CC BY 4.0).
+See https://creativecommons.org/licenses/by/4.0/.
+This website uses it only for the SimpleTouch display wordmark.
+
+Research figures and media
+=========================
+The PDF, figures, task stills, and demo video are supplied SimpleTouch research
+materials. No blanket license for those materials is granted by this website.
+
+Layout
+======
+The page HTML, CSS, and JavaScript are newly authored for SimpleTouch.
+No source code or assets from the UMI or Nerfies websites are included.
