@@ -24,3 +24,7 @@ td:last-child{font-weight:400}.table-ours th:first-child{color:var(--purple);fon
 .hero-actions .button[aria-disabled="true"]{cursor:default}
 .hero-actions .button[aria-disabled="true"]:hover{background:transparent;transform:none}
 .hero-actions .button.primary[aria-disabled="true"]:hover{background:var(--ink);border-color:var(--ink)}
+.hero-update{max-width:65rem;margin:1.25rem auto 0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:balance}
+.hero-update a,.hero-update strong{color:var(--purple);font-weight:650}
+.hero-update a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.hero-update a:hover{color:var(--purple-dark)}
